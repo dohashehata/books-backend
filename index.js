@@ -18,6 +18,9 @@ console.log(process.env.DB_URL);
 
 
 app.use('/books',booksRouter)
+app.all('*',(req,res,next)=>{
+    res.status(404).json({message:'Route not found'})
+})
 
 app.listen(port, () => {
     console.log(`server is running on port ${port}`);
